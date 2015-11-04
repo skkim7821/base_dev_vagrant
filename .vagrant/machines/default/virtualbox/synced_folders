@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"create":true,"owner":"vagrant","group":"vagrant","guestpath":"/vagrant","hostpath":"/Users/skkim/devtoolbox/vagrant/base","disabled":false}}}

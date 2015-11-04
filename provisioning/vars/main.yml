@@ -1,0 +1,17 @@
+---
+# oh my zsh
+docker_user: vagrant
+
+# nvm
+nvm_node_version: 5.0.0
+nvm_user: {user: 'nvm', group: 'nvm', passphrase: "nvmpassphrase" }
+nvm_users_profiles: 
+  - { user: "vagrant", group: "vagrant"}
+nvm_npm_pkg:
+  - bower
+  - forever
+  - pm2
+  - eslint
+  - webpack
+  - webpack-dev-server
+nvm_node_default_version_pattern: "node -> stable (-> v{{ nvm_node_version }}) (default)"

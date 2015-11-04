@@ -1,0 +1,22 @@
+---
+# Ansible playbook for a Node.js API app server.
+#
+# @author Jeff Geerling (2015).
+
+- hosts: all
+  gather_facts: yes
+  sudo: yes
+
+  vars_files: 
+    - vars/main.yml
+
+  roles:
+    - marvinpinto.docker
+    - williamyeh.docker-tools
+    - radamanth.node-nvm-ansible
+
+  tasks:
+    - name: create the docker group and add your user
+      shell: "usermod -aG docker {{ docker_user }}"
+
+
