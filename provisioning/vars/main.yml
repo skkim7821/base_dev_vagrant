@@ -12,6 +12,8 @@ nvm_npm_pkg:
   - forever
   - pm2
   - eslint
+  - babel
+  - babel-cli
   - webpack
   - webpack-dev-server
 nvm_node_default_version_pattern: "node -> stable (-> v{{ nvm_node_version }}) (default)"
