@@ -65,6 +65,19 @@ s3cmd로 riak cs로 테스트한다.
 
 * [s3cmd 공식](http://s3tools.org/s3cmd) 
 
+## docker로 생성되는 서비스
+### mongodb
+```shell
+mongo host_ip:host_port
+```
+
+### redis
+
+```shell
+redis-cli -h host_ip -p host_port
+```
+### mailserver 
+
 # h1 
 
 ## h2
