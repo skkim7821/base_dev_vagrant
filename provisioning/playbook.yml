@@ -18,5 +18,13 @@
   tasks:
     - name: create the docker group and add your user
       shell: "usermod -aG docker {{ docker_user }}"
-
-
+    # docker run -d -p 27017:27017 --name mongodb dockerfile/mongodb
+    - name: run mongodb by docker
+      docker:
+        name: mongodb
+        image: dockerfile/mongodb
+        state: started
+        pull: always
+        ports:
+        - "27017:27017"
+        

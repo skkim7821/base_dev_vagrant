@@ -1,0 +1,82 @@
+- name: data_container
+  docker:
+    name: mydata
+    image: busybox
+    state: present
+    volumes:
+    - /data
+
+- name: redis container
+  docker:
+    name: myredis
+    image: redis
+    command: redis-server --appendonly yes
+    state: started
+    expose:
+    - 6379
+    volumes_from
+    - mydata
+- name: application container
+  docker:
+    name: myapplication
+    image: someuser/appimage
+    state: reloaded
+    pull: always
+    links:
+      - "myredis:aliasredis"
+    ports:
+      - "8080:9000"
+      - "127.0.0.1:8081:9001/udp"
+    env:
+      SECRET_KEY: ssssh
+
+- name: load-balanced containers
+  docker:
+    state: reloaded
+    count: 5
+    image: someuser/anotherimage
+    command: sleep 1d
+- name: application service
+  docker:
+    name: myservice
+    image: someuser/serviceimage
+    state: restarted
+
+- name: obsolete container
+  docker:
+    image: someuser/oldandhusted
+    state: stopped
+
+- name: obsolete container
+  docker:
+    name: ohno
+    image: someuser/oldandhusted
+    state: absent
+
+- name: myservice container
+  docker:
+    name: myservice
+    image: someservice/something
+    state: reloaded
+    log_driver: syslog
+    log_opt: 
+      syslog-address: tcp://my-syslog-server:514
+      syslog-facility: daemon
+      syslog-tag: myservice
+
+- name: docker example
+  docker:
+    name: myservice
+    image: someuser/something
+    state: started
+    expose: 
+    - 6379
+    volumes_from
+    - mydata
+    links:
+    - "myredis:alaisredis"
+    ports:
+    - "8080:9000"
+    - ""
+  
+

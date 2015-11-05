@@ -1,4 +1,4 @@
 ---
 - src: marvinpinto.docker
 - src: williamyeh.docker-tools
-- src: laggyluke.nodejs
+- src: radamanth.node-nvm-ansible
