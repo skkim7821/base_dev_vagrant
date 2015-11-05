@@ -69,6 +69,7 @@
     name: myservice
     image: someuser/something
     state: started
+    pull: always
     expose: 
     - 6379
     volumes_from
@@ -77,6 +78,16 @@
     - "myredis:alaisredis"
     ports:
     - "8080:9000"
-    - ""
+    publish_all_ports: yes
+    env:
+      SECRET_KEY: ssssh
+      SOMEVAR: value
+      SHH_SECRET: "{ from_the_vault}"
   
+- name: check or build image
+  docker_image: >
+    path="/path/to/build/dir"
+    name="my/app"
+    tag=ex1
+    state=build
 
