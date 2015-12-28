@@ -22,7 +22,7 @@
     - name: run mongodb by docker
       docker:
         name: mongodb
-        image: dockerfile/mongodb
+        image: ../dockerfiles/mongodb/Dockerfile
         state: started
         pull: always
         ports:
