@@ -21,9 +21,6 @@ Vagrant.configure(2) do |config|
   # config.ssh.username = 'root'
   # config.ssh.password = 'vagrant'
   # config.ssh.insert_key = 'true'
-
-  config.vm.provision "shell", inline: $desc
-  
   
   config.vm.provider "virtualbox" do |vb|
     vb.memory = $vb_memory
