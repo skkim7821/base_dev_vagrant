@@ -8,7 +8,6 @@ nvm_user: {user: 'nvm', group: 'nvm', passphrase: "nvmpassphrase" }
 nvm_users_profiles: 
   - { user: "vagrant", group: "vagrant"}
 nvm_npm_pkg:
-  - bower
   - forever
   - pm2
   - eslint
