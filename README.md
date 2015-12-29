@@ -69,11 +69,11 @@ ansible이 하는 것들. docker, docker toolbox, nvm을 만든 후에 docker로
 
 ansible role에 해당하는 것을 ansible galaxy에서 다운 받습니다. requrements.yml은 playbook.yml에 필요한 롤들을 로컬에 다운 받게 합니다. 
 ```shell
-ansible-galaxy install -r requirements.yml
+sudo ansible-galaxy install -r requirements.yml
 ```
 기존 파일에 playbook을 추가할 경우에 강제로 기존의 설치한 것을 덮어씌움  
 ```shell
-ansible-galaxy install -r -f requirements.yml
+sudo ansible-galaxy install -r requirements.yml -f
 ```
 
 ## vagrant 
