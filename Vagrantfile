@@ -14,10 +14,10 @@ Vagrant.configure(2) do |config|
   config.vm.box = $boxname
   config.vm.box_check_update = true
   config.vm.hostname = "frontend"
-  # config.vm.box_url = "http://example.com/box/box.json"
   config.vm.network "private_network", ip: $con_ip
   config.vm.synced_folder "./", "/vagrant/", create: true, owner: "vagrant", group: "vagrant"
 
+  # config.vm.box_url = "http://example.com/box/box.json"
   # config.ssh.username = 'root'
   # config.ssh.password = 'vagrant'
   # config.ssh.insert_key = 'true'

@@ -26,10 +26,18 @@
 
     # - name: install some pip package
     #   shell: "pip install pyopenssl ndg-httpsclient pyasn1"
+    #   
+    # create data folder
+    #   - mongodb
+    #   - redis
+    # create logs folder
+    #   - mongodb
+    #   - redis
 
     - name: install docker-py
       pip: name="docker-py"
 
+    # build redis
     - name: build dockerfiles 
       docker_image: 
         name: "{{ item.name }}" 
@@ -37,13 +45,26 @@
         path: "/vagrant/dockerfiles/{{ item.directory }}" 
         state: build
       with_items:
-        - { name: "sk/mongodb", tag: "data", directory: "mongodb" }
+        - { name: "mongodb", tag: "data", directory: "mongodb" }
+        - { name: "redis", tag: "data", directory: "redis" }
 
     - name: run mongodb container 
       docker:
-        image: sk/mongodb:data
+        image: mongodb:data
         name: mongodb
-        state: present
-        pull: always
+        state: started
+        restart_policy: always
         ports:
         - "27017:27017"
+        docker_api_version: 1.18
+
+    - name: run redis container 
+      docker:
+        image: redis:data
+        name: redis
+        state: started
+        restart_policy: always
+        ports:
+        - "6379:6379"
+        docker_api_version: 1.18
+
