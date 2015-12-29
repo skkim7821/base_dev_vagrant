@@ -14,19 +14,36 @@
     - marvinpinto.docker
     - williamyeh.docker-tools
     - radamanth.node-nvm-ansible
+    - bobbyrenwick.pip
 
   tasks:
     - name: create the docker group and add your user
       shell: "usermod -aG docker {{ docker_user }}"
     # docker run -d -p 27017:27017 --name mongodb dockerfile/mongodb
-    - name: build mongodb 
-      docker_image: path="dockerfiles/mongodb/Dockerfile" name="sk/mongodb" state=build
-    - name: run mongodb by docker
+
+    # - name: install some apt package
+    #   shell: "apt-get install libffi-dev libssl-dev"
+
+    # - name: install some pip package
+    #   shell: "pip install pyopenssl ndg-httpsclient pyasn1"
+
+    - name: install docker-py
+      pip: name="docker-py"
+
+    - name: build dockerfiles 
+      docker_image: 
+        name: "{{ item.name }}" 
+        tag: "{{ item.tag }}"
+        path: "/vagrant/dockerfiles/{{ item.directory }}" 
+        state: build
+      with_items:
+        - { name: "sk/mongodb", tag: "data", directory: "mongodb" }
+
+    - name: run mongodb container 
       docker:
+        image: sk/mongodb:data
         name: mongodb
-        image: sk/mongodb
-        state: started
-        log_driver: json-file
+        state: present
         pull: always
         ports:
         - "27017:27017"

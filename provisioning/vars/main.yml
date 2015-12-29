@@ -16,3 +16,4 @@ nvm_npm_pkg:
   - webpack
   - webpack-dev-server
 nvm_node_default_version_pattern: "node -> stable (-> v{{ nvm_node_version }}) (default)"
+ansible_python_interpreter: python

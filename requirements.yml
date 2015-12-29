@@ -2,3 +2,4 @@
 - src: marvinpinto.docker
 - src: williamyeh.docker-tools
 - src: radamanth.node-nvm-ansible
+- src: bobbyrenwick.pip
