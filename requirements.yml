@@ -3,3 +3,5 @@
 - src: williamyeh.docker-tools
 - src: radamanth.node-nvm-ansible
 - src: bobbyrenwick.pip
+- src: angstwad.docker_ubuntu
+- src: elnebuloso.docker

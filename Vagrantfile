@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 $time = Time.now.strftime("%Y%m%d_%H%M%S");
-$boxname = "ubuntu/trusty64"
+$boxname = "williamyeh/ubuntu-trusty64-docker"
 $vmname = "dev_base"
 $virtname = $vmname + "_" + $time
 $vb_cpus = 2

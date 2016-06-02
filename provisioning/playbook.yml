@@ -11,9 +11,9 @@
     - vars/main.yml
 
   roles:
-    - angstwad.docker_ubuntu
-    - williamyeh.docker-tools
-    - radamanth.node-nvm-ansible
+    # - angstwad.docker_ubuntu
+    # - williamyeh.docker-tools
+    # - radamanth.node-nvm-ansible
     - bobbyrenwick.pip
 
   tasks:
